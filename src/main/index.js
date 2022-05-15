@@ -1,6 +1,7 @@
 import "./index.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function MainPage() {
   const [products, setProducts] = useState([]);
@@ -36,29 +37,31 @@ function MainPage() {
         <div id="product-list">
           {products.map(function (product, index) {
             return (
-              <div className="product-card" key={index}>
-                <div>
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="product-img"
-                  />
-                </div>
-                <div className="product-contents">
-                  <span className="product-name">{product.name}</span>
-                  <span className="product-price">
-                    {product.price}원
-                    <span className="product-seller">
-                      <img
-                        src="images/icons/avatar.png"
-                        alt={product.name}
-                        className="product-avatar"
-                      />
-                      <span>{product.seller}</span>
+              <Link className="product-link" to={`/products/${index}`}>
+                <div className="product-card" key={index}>
+                  <div>
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      className="product-img"
+                    />
+                  </div>
+                  <div className="product-contents">
+                    <span className="product-name">{product.name}</span>
+                    <span className="product-price">
+                      {product.price}원
+                      <span className="product-seller">
+                        <img
+                          src="images/icons/avatar.png"
+                          alt={product.name}
+                          className="product-avatar"
+                        />
+                        <span>{product.seller}</span>
+                      </span>
                     </span>
-                  </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
