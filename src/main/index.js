@@ -21,53 +21,47 @@ function MainPage() {
 
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <img src="images/icons/logo.png" />
-        </div>
+      <div id="banner">
+        <img src="/images/banners/banner1.png" alt="img" />
       </div>
 
-      <div id="body">
-        <div id="banner">
-          <img src="images/banners/banner1.png" />
-        </div>
+      <h1>판매되는 상품들</h1>
 
-        <h1>판매되는 상품들</h1>
-
-        <div id="product-list">
-          {products.map(function (product, index) {
-            return (
-              <Link className="product-link" to={`/products/${index}`}>
-                <div className="product-card" key={index}>
-                  <div>
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      className="product-img"
-                    />
-                  </div>
-                  <div className="product-contents">
-                    <span className="product-name">{product.name}</span>
-                    <span className="product-price">
-                      {product.price}원
-                      <span className="product-seller">
-                        <img
-                          src="images/icons/avatar.png"
-                          alt={product.name}
-                          className="product-avatar"
-                        />
-                        <span>{product.seller}</span>
-                      </span>
-                    </span>
-                  </div>
+      <div id="product-list">
+        {products.map(function (product, index) {
+          return (
+            <Link
+              key={product.id}
+              className="product-link"
+              to={`/products/${product.id}`}
+            >
+              <div className="product-card">
+                <div>
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="product-img"
+                  />
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+                <div className="product-contents">
+                  <span className="product-name">{product.name}</span>
+                  <span className="product-price">
+                    {product.price}원
+                    <span className="product-seller">
+                      <img
+                        src="images/icons/avatar.png"
+                        alt={product.name}
+                        className="product-avatar"
+                      />
+                      <span>{product.seller}</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-
-      <div id="footer"></div>
     </div>
   );
 }
