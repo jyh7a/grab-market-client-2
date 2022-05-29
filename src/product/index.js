@@ -14,7 +14,7 @@ function ProductPage() {
     axios
       .get(`${API_URL}/products/${id}`)
       .then(function (result) {
-        setProduct(result.data.product.result);
+        setProduct(result.data.product);
       })
       .catch(function (error) {
         console.error("에러발생", error);
